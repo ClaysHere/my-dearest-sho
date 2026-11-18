@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dearest Sho ♡ — Five Months Anniversary</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Floating Elements Background -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Audio Player -->
+    <div class="audio-player" id="audioPlayer">
+        <button class="audio-btn" id="playPauseBtn">▶</button>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+        <span class="audio-label">🎵 Our Song</span>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/our-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">♡ Riet & Sho</div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#beginning">Our Beginning</a></li>
+            <li><a href="#reasons">Reasons</a></li>
+            <li><a href="#memories">Memories</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#letter">Letter</a></li>
+            <li><a href="#surprise">Surprise</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title typewriter">My Dearest Sho ♡</h1>
+            <p class="hero-subtitle fade-in-up">Five Months of Us</p>
+            <div class="hero-decorations">
+                <span class="decoration strawberry">🍓</span>
+                <span class="decoration sunflower">🌻</span>
+                <span class="decoration piano">🎹</span>
+                <span class="decoration heart">💕</span>
+            </div>
+            <p class="hero-message fade-in-up delay-1">Dari Arrietty untuk Sho, dengan segenap cinta ♡</p>
+            <button class="scroll-down-btn" onclick="smoothScroll('#beginning')">↓ Let's Begin Our Story</button>
+        </div>
+    </section>
+
+    <!-- Chapter One: Our Beginning -->
+    <section id="beginning" class="chapter-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Chapter One: Our Beginning 🎹</h2>
+            <div class="story-card fade-in-scroll">
+                <div class="story-icon">🎮</div>
+                <h3>Where It All Started</h3>
+                <p class="story-text">Di dunia Roblox Relapse, dua jiwa bertemu. Arrietty dan Sho. Bukan kebetulan,
+                    bukan random—tapi takdir yang membawa kita bersama.</p>
+                <p class="story-text highlight">Momen piano itu... saat jari-jari menari di atas tuts virtual, melodi
+                    pertama tercipta. Dan dari sana, sebuah friend request mengubah segalanya. ♡</p>
+                <div class="story-quote">"Sometimes the most beautiful stories begin with a simple hello."</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Two: Five Tiny Reasons -->
+    <section id="reasons" class="chapter-section reasons-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Chapter Two: Five Tiny Reasons 💕</h2>
+            <div class="reasons-grid">
+                <div class="reason-card fade-in-scroll delay-1">
+                    <div class="reason-number">1</div>
+                    <div class="reason-icon">💝</div>
+                    <h3>Your Heart</h3>
+                    <p>Cara kamu care, cara kamu love—semuanya pure dan genuine.</p>
+                </div>
+                <div class="reason-card fade-in-scroll delay-2">
+                    <div class="reason-number">2</div>
+                    <div class="reason-icon">😄</div>
+                    <h3>Your Silliness</h3>
+                    <p>Kelucuanmu bikin hari-hari jadi lebih cerah dan penuh laughter.</p>
+                </div>
+                <div class="reason-card fade-in-scroll delay-3">
+                    <div class="reason-number">3</div>
+                    <div class="reason-icon">🎵</div>
+                    <h3>Your Voice</h3>
+                    <p>Suaramu adalah melodi favoritku, selalu ingin dengar lebih.</p>
+                </div>
+                <div class="reason-card fade-in-scroll delay-4">
+                    <div class="reason-number">4</div>
+                    <div class="reason-icon">✨</div>
+                    <h3>Your Presence</h3>
+                    <p>Hadirimu membuat segalanya terasa lengkap dan warm.</p>
+                </div>
+                <div class="reason-card fade-in-scroll delay-5">
+                    <div class="reason-number">5</div>
+                    <div class="reason-icon">🌟</div>
+                    <h3>Just Being You</h3>
+                    <p>Kamu adalah kamu, dan itu sudah lebih dari cukup. Perfect as you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter Three: Memory Shelf -->
+    <section id="memories" class="chapter-section memories-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Chapter Three: Our Little Memory Shelf 📸</h2>
+            <div class="memory-shelf">
+                <div class="memory-frame fade-in-scroll">
+                    <div class="frame-placeholder" onclick="uploadPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Tap to add photo</p>
+                    </div>
+                    <div class="frame-caption">Where it all began - Relapse 🎮</div>
+                </div>
+                <div class="memory-frame fade-in-scroll delay-1">
+                    <div class="frame-placeholder" onclick="uploadPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Tap to add photo</p>
+                    </div>
+                    <div class="frame-caption">Piano moments 🎹</div>
+                </div>
+                <div class="memory-frame fade-in-scroll delay-2">
+                    <div class="frame-placeholder" onclick="uploadPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Tap to add photo</p>
+                    </div>
+                    <div class="frame-caption">Sunflowers & Strawberry days 🌻🍓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Photo Gallery Section -->
+    <section id="gallery" class="chapter-section gallery-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Our Photo Gallery 🖼️</h2>
+            <div class="gallery-filters fade-in-scroll">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="relapse">Relapse</button>
+                <button class="filter-btn" data-filter="piano">Piano</button>
+                <button class="filter-btn" data-filter="moments">Special Moments</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item fade-in-scroll" data-category="relapse">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Our first meeting</span></div>
+                </div>
+                <div class="gallery-item fade-in-scroll delay-1" data-category="piano">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Piano serenade</span></div>
+                </div>
+                <div class="gallery-item fade-in-scroll delay-2" data-category="moments">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Sweet moments</span></div>
+                </div>
+                <div class="gallery-item fade-in-scroll delay-3" data-category="relapse">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Adventures together</span></div>
+                </div>
+                <div class="gallery-item fade-in-scroll delay-4" data-category="moments">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Laughing together</span></div>
+                </div>
+                <div class="gallery-item fade-in-scroll delay-5" data-category="piano">
+                    <div class="gallery-placeholder" onclick="uploadGalleryPhoto(this)">
+                        <span class="upload-icon">+</span>
+                        <p>Add photo</p>
+                    </div>
+                    <div class="gallery-overlay"><span class="gallery-caption">Musical memories</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- NEW: Interactive Timeline -->
+    <section id="timeline" class="chapter-section timeline-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Our Journey Together ⏰</h2>
+            <div class="timeline" id="timelineContainer">
+                <div class="timeline-item fade-in-scroll left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 1</div>
+                        <h3>The Beginning 🎮</h3>
+                        <p>Met in Roblox Relapse. Piano moment. Friend request sent. Story begins.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-scroll right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 2</div>
+                        <h3>Getting Closer 💕</h3>
+                        <p>More conversations, more laughter, more memories being made.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-scroll left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 3</div>
+                        <h3>Deepening Connection 🌻</h3>
+                        <p>Understanding each other better, creating our own inside jokes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-scroll right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 4</div>
+                        <h3>Growing Together 🍓</h3>
+                        <p>Supporting each other, sharing dreams, building something special.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in-scroll left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Month 5</div>
+                        <h3>Five Months of Love ♡</h3>
+                        <p>Here we are, celebrating five beautiful months together. And this is just the beginning!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Letter -->
+    <section id="letter" class="chapter-section letter-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">A Letter For You 💌</h2>
+            <div class="letter-container fade-in-scroll">
+                <div class="letter-envelope" id="letterEnvelope" onclick="openLetter()">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <span class="seal">♡</span>
+                        <p class="envelope-text">Click to open</p>
+                    </div>
+                </div>
+                <div class="letter-content" id="letterContent">
+                    <div class="letter-paper">
+                        <h3>My Dearest Sho,</h3>
+                        <div class="letter-body">
+                            <p>Lima bulan sudah berlalu sejak pertama kali kita bertemu di dunia Relapse.</p>
+                            <p>Dari momen piano yang sederhana, hingga menjadi bagian terpenting dalam hidupku.</p>
+                            <p>Kamu adalah alasan di balik senyumku setiap hari. Setiap percakapan, setiap tawa, setiap
+                                momen bersamamu—semuanya berharga.</p>
+                            <p>Terima kasih telah menjadi kamu. Terima kasih atas kesabaranmu, kebaikanmu, dan cintamu.
+                            </p>
+                            <p>Aku bersyukur setiap hari karena memilikimu dalam hidupku. Kamu adalah hadiah terindah
+                                yang pernah kuterima.</p>
+                            <p>Ini baru permulaan, Sho. Masih banyak cerita yang akan kita tulis bersama. Masih banyak
+                                kenangan yang akan kita ciptakan.</p>
+                            <p>Dengan seluruh cintaku,<br><strong>Riet (Arrietty) ♡</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Surprise -->
+    <section id="surprise" class="chapter-section surprise-section">
+        <div class="container">
+            <h2 class="chapter-title fade-in-scroll">Final Surprise 🎁</h2>
+            <div class="surprise-box fade-in-scroll" id="surpriseBox" onclick="revealSurprise()">
+                <div class="box-lid"></div>
+                <div class="box-body">
+                    <span class="box-text">Click me! 🎀</span>
+                </div>
+            </div>
+            <div class="surprise-content" id="surpriseContent">
+                <div class="hearts-explosion" id="heartsExplosion"></div>
+                <h3 class="surprise-title">Happy 5 Months Anniversary! 🎉</h3>
+                <p class="surprise-message">
+                    Terima kasih telah menjadi bagian terindah dalam hidupku.<br>
+                    Here's to many more months, years, and forever together! ♡
+                </p>
+                <div class="countdown-timer">
+                    <p>Together for:</p>
+                    <div class="timer-display" id="timerDisplay">
+                        <span class="time-unit"><span class="time-value" id="months">5</span><span
+                                class="time-label">Months</span></span>
+                        <span class="time-unit"><span class="time-value" id="days">0</span><span
+                                class="time-label">Days</span></span>
+                        <span class="time-unit"><span class="time-value" id="hours">0</span><span
+                                class="time-label">Hours</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with ♡ by Riet for Sho</p>
+        <p class="footer-date">Five Months Anniversary • 2026</p>
+        <div class="footer-decorations">
+            <span>🍓</span><span>🌻</span><span>🎹</span><span>💕</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
