@@ -2,7 +2,7 @@
 // MY DEAREST SHO - INTERACTIVE FEATURES
 // ============================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeFloatingElements();
     initializeScrollAnimations();
     initializeAudioPlayer();
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeFloatingElements() {
     const container = document.getElementById('floatingElements');
     const emojis = ['♡', '🍓', '🌻', '🎹', '💕', '✨'];
-    
+
     for (let i = 0; i < 20; i++) {
         const element = document.createElement('div');
         element.className = 'floating-item';
@@ -43,28 +43,29 @@ function initializeScrollAnimations() {
 }
 
 // AUDIO PLAYER
+// AUDIO PLAYER - Manual control only
 function initializeAudioPlayer() {
     const audio = document.getElementById('bgMusic');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const volumeSlider = document.getElementById('volumeSlider');
-    
+
     let isPlaying = false;
     audio.volume = 0.5;
-    
-    playPauseBtn.addEventListener('click', function() {
+
+    // Tombol play/pause
+    playPauseBtn.addEventListener('click', function () {
         if (isPlaying) {
             audio.pause();
             playPauseBtn.textContent = '▶';
         } else {
-            audio.play().catch(error => {
-                console.log('Audio autoplay prevented:', error);
-            });
+            audio.play();
             playPauseBtn.textContent = '⏸';
         }
         isPlaying = !isPlaying;
     });
-    
-    volumeSlider.addEventListener('input', function() {
+
+    // Volume control
+    volumeSlider.addEventListener('input', function () {
         audio.volume = this.value / 100;
     });
 }
@@ -73,18 +74,18 @@ function initializeAudioPlayer() {
 function initializeNavigation() {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
-    hamburger.addEventListener('click', function() {
+
+    hamburger.addEventListener('click', function () {
         navLinks.classList.toggle('active');
     });
-    
+
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
         });
     });
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener('scroll', function () {
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 50) {
             navbar.style.padding = '10px 40px';
@@ -96,9 +97,24 @@ function initializeNavigation() {
     });
 }
 
+// Smooth scroll function - dengan autoplay musik
 function smoothScroll(target) {
+    const audio = document.getElementById('bgMusic');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+
+    // Coba play musik saat tombol diklik
+    audio.play().then(() => {
+        // Musik berhasil play
+        playPauseBtn.textContent = '⏸';
+    }).catch(error => {
+        console.log('Audio play failed:', error);
+    });
+
+    // Scroll ke section yang dituju
     const element = document.querySelector(target);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // PHOTO UPLOAD - Memory Shelf
@@ -106,12 +122,12 @@ function uploadPhoto(element) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    
-    input.onchange = function(e) {
+
+    input.onchange = function (e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = function (event) {
                 element.innerHTML = '';
                 const img = document.createElement('img');
                 img.src = event.target.result;
@@ -119,7 +135,7 @@ function uploadPhoto(element) {
                 img.style.height = '100%';
                 img.style.objectFit = 'cover';
                 img.style.borderRadius = '10px';
-                img.onclick = function() { openLightbox(this); };
+                img.onclick = function () { openLightbox(this); };
                 element.appendChild(img);
                 element.style.border = 'none';
             };
@@ -134,12 +150,12 @@ function uploadGalleryPhoto(element) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    
-    input.onchange = function(e) {
+
+    input.onchange = function (e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = function (event) {
                 element.outerHTML = '<img src="' + event.target.result + '" alt="Memory" onclick="openLightbox(this)">';
             };
             reader.readAsDataURL(file);
@@ -152,14 +168,14 @@ function uploadGalleryPhoto(element) {
 function initializeGalleryFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
-    
+
     filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             filterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-            
+
             const filter = this.getAttribute('data-filter');
-            
+
             galleryItems.forEach(item => {
                 if (filter === 'all' || item.getAttribute('data-category') === filter) {
                     item.style.display = 'block';
@@ -182,7 +198,7 @@ function openLightbox(img) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
-    
+
     lightboxImg.src = img.src;
     const captionEl = img.nextElementSibling;
     if (captionEl && captionEl.classList.contains('gallery-overlay')) {
@@ -199,12 +215,12 @@ function closeLightbox() {
     document.body.style.overflow = 'auto';
 }
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const lightbox = document.getElementById('lightbox');
     if (e.target === lightbox) closeLightbox();
 });
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeLightbox();
 });
 
@@ -222,7 +238,7 @@ function revealSurprise() {
     const surpriseBox = document.getElementById('surpriseBox');
     const surpriseContent = document.getElementById('surpriseContent');
     surpriseBox.classList.add('opened');
-    
+
     setTimeout(() => {
         surpriseBox.style.display = 'none';
         surpriseContent.classList.add('show');
@@ -235,7 +251,7 @@ function createHeartsBurst(element) {
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     for (let i = 0; i < 20; i++) {
         setTimeout(() => createHeart(centerX, centerY), i * 50);
     }
@@ -244,7 +260,7 @@ function createHeartsBurst(element) {
 function createHeartsExplosion() {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
-    
+
     for (let i = 0; i < 50; i++) {
         setTimeout(() => createHeart(centerX, centerY, true), i * 30);
     }
@@ -261,28 +277,28 @@ function createHeart(x, y, isExplosion = false) {
     heart.style.pointerEvents = 'none';
     heart.style.zIndex = '3000';
     heart.style.transition = 'all 1.5s ease-out';
-    
+
     document.body.appendChild(heart);
-    
+
     const angle = Math.random() * Math.PI * 2;
     const distance = isExplosion ? Math.random() * 200 + 100 : Math.random() * 100 + 50;
     const endX = x + Math.cos(angle) * distance;
     const endY = y + Math.sin(angle) * distance - 100;
-    
+
     setTimeout(() => {
         heart.style.left = endX + 'px';
         heart.style.top = endY + 'px';
         heart.style.opacity = '0';
         heart.style.transform = 'scale(' + (Math.random() * 0.5 + 0.5) + ') rotate(' + (Math.random() * 360) + 'deg)';
     }, 50);
-    
+
     setTimeout(() => heart.remove(), 1500);
 }
 
 // TIMELINE ANIMATION
 function initializeTimelineAnimation() {
     const timelineItems = document.querySelectorAll('.timeline-item');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -291,7 +307,7 @@ function initializeTimelineAnimation() {
             }
         });
     }, { threshold: 0.2 });
-    
+
     timelineItems.forEach(item => {
         item.style.opacity = '0';
         item.style.transform = item.classList.contains('left') ? 'translateX(-50px)' : 'translateX(50px)';
@@ -307,15 +323,15 @@ function initializeTimelineAnimation() {
 //     // Contoh: 18 Juni 2026 = new Date(2026, 5, 18)
 //     const startDate = new Date(2026, 5, 18);
 //     const now = new Date();
-    
+
 //     const diffTime = Math.abs(now - startDate);
 //     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 //     const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    
+
 //     const months = 5;
 //     const days = diffDays % 30;
 //     const hours = diffHours;
-    
+
 //     document.getElementById('months').textContent = months;
 //     document.getElementById('days').textContent = days;
 //     document.getElementById('hours').textContent = hours;
@@ -382,7 +398,7 @@ setInterval(updateCountdownTimer, 60000);
 
 
 // CURSOR TRAIL EFFECT
-document.addEventListener('mousemove', function(e) {
+document.addEventListener('mousemove', function (e) {
     const trail = document.createElement('div');
     trail.textContent = '♡';
     trail.style.position = 'fixed';
@@ -394,14 +410,14 @@ document.addEventListener('mousemove', function(e) {
     trail.style.zIndex = '9999';
     trail.style.transition = 'all 0.5s ease-out';
     trail.style.opacity = '0.7';
-    
+
     document.body.appendChild(trail);
-    
+
     setTimeout(() => {
         trail.style.opacity = '0';
         trail.style.transform = 'scale(0.5) translateY(-20px)';
     }, 50);
-    
+
     setTimeout(() => trail.remove(), 500);
 });
 
@@ -409,10 +425,10 @@ document.addEventListener('mousemove', function(e) {
 let konamiCode = [];
 const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     konamiCode.push(e.keyCode);
     if (konamiCode.length > konamiSequence.length) konamiCode.shift();
-    
+
     if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
         activateEasterEgg();
     }
@@ -420,7 +436,7 @@ document.addEventListener('keydown', function(e) {
 
 function activateEasterEgg() {
     alert('🎉 Secret unlocked! 🎉\n\nRiet loves Sho more than words can say! ♡');
-    
+
     for (let i = 0; i < 100; i++) {
         setTimeout(() => {
             const x = Math.random() * window.innerWidth;
