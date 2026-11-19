@@ -301,27 +301,85 @@ function initializeTimelineAnimation() {
 }
 
 // COUNTDOWN TIMER
+// function updateCountdownTimer() {
+//     // ⚠️ GANTI TANGGAL INI DENGAN TANGGAL ANNIVERSARY KALIAN!
+//     // Format: new Date(TAHUN, BULAN-1, TANGGAL)
+//     // Contoh: 18 Juni 2026 = new Date(2026, 5, 18)
+//     const startDate = new Date(2026, 5, 18);
+//     const now = new Date();
+    
+//     const diffTime = Math.abs(now - startDate);
+//     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+//     const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+//     const months = 5;
+//     const days = diffDays % 30;
+//     const hours = diffHours;
+    
+//     document.getElementById('months').textContent = months;
+//     document.getElementById('days').textContent = days;
+//     document.getElementById('hours').textContent = hours;
+// }
+
+// setInterval(updateCountdownTimer, 3600000);
+
+// LIVE RELATIONSHIP TIMER
 function updateCountdownTimer() {
-    // ⚠️ GANTI TANGGAL INI DENGAN TANGGAL ANNIVERSARY KALIAN!
-    // Format: new Date(TAHUN, BULAN-1, TANGGAL)
-    // Contoh: 18 Juni 2026 = new Date(2026, 5, 18)
-    const startDate = new Date(2026, 5, 18);
+    // Relationship start date: 18 June 2026
+    const startDate = new Date(2026, 5, 18, 0, 0, 0);
     const now = new Date();
-    
-    const diffTime = Math.abs(now - startDate);
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const diffHours = Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    
-    const months = 5;
-    const days = diffDays % 30;
-    const hours = diffHours;
-    
+
+    if (now < startDate) return;
+
+    // Calculate completed calendar months
+    let months =
+        (now.getFullYear() - startDate.getFullYear()) * 12 +
+        (now.getMonth() - startDate.getMonth());
+
+    let anniversaryDate = new Date(
+        startDate.getFullYear(),
+        startDate.getMonth() + months,
+        startDate.getDate(),
+        startDate.getHours(),
+        startDate.getMinutes(),
+        startDate.getSeconds()
+    );
+
+    if (now < anniversaryDate) {
+        months--;
+    }
+
+    // Calculate remaining days and hours
+    anniversaryDate = new Date(
+        startDate.getFullYear(),
+        startDate.getMonth() + months,
+        startDate.getDate(),
+        startDate.getHours(),
+        startDate.getMinutes(),
+        startDate.getSeconds()
+    );
+
+    const elapsedTime = now - anniversaryDate;
+
+    const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+        (elapsedTime % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
     document.getElementById('months').textContent = months;
     document.getElementById('days').textContent = days;
     document.getElementById('hours').textContent = hours;
+
+    // Update anniversary heading automatically
+    document.getElementById('anniversaryTitle').textContent =
+        `Happy ${months} Months Together! ♡`;
 }
 
-setInterval(updateCountdownTimer, 3600000);
+// Update immediately and refresh every minute
+updateCountdownTimer();
+setInterval(updateCountdownTimer, 60000);
+
 
 // CURSOR TRAIL EFFECT
 document.addEventListener('mousemove', function(e) {
